@@ -19,10 +19,10 @@ class graph:
 
     def add_edge(self, visited, week, date, home_team, away_team, home_goals, away_goals, result):
         if len(self.adj_list[home_team]) == 0:
-            self.adj_list[home_team].append(())
+            self.adj_list[home_team].append([])
 
-        new_tuble = (visited ,week, date, away_team, home_goals, away_goals, result)
-        self.adj_list[home_team].insert(week, new_tuble)
+        new_list = [visited ,week, date, away_team, home_goals, away_goals, result]
+        self.adj_list[home_team].insert(week, new_list)
 
     def graph_initialization(self):
         for index, row in data.iterrows():
@@ -53,5 +53,9 @@ class graph:
 
 g = graph()
 g.graph_initialization()
-g.calc_standings(2)
+print("\n\n\n\t\t\t\t\t\t\t\t\tBefore BFS values[0] are set to False")
+print(g.adj_list)
+
+g.calc_standings(2)         # Function to traverse the graph using BFS and calc the standings
+print("\n\n\n\n\t\t\t\t\t\t\t\t\tAfter BFS values[0] are set to True")
 print(g.adj_list)
